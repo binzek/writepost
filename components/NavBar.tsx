@@ -6,7 +6,7 @@ import { Poppins } from "next/font/google";
 
 import { Logo, MenuIcon, CloseIcon } from "@/assets/icons";
 
-const poppins = Poppins({ subsets: ["latin"], weight: "400" });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,7 +21,7 @@ const NavBar = () => {
 
   return (
     <div
-      className={`${poppins.className} flex justify-between items-center py-3 px-4 lg:py-4 lg:px-5`}
+      className={`${poppins.className} flex justify-between font-normal items-center py-3 px-4 lg:py-4 lg:px-5`}
     >
       <a href="/">
         <Logo />
@@ -45,7 +45,7 @@ const NavBar = () => {
             onClick={onMenuClose}
           />
           <ul className="flex flex-col items-center gap-2 text-lg">
-            <li>
+            <li className="font-semibold">
               <Link href="/">Home</Link>
             </li>
             <li>
@@ -63,7 +63,7 @@ const NavBar = () => {
 
       {/* Desktop Navbar */}
       <ul className="hidden lg:flex items-center gap-10 text-lg">
-        <li className="border-b-2 border-clr-black">
+        <li className="font-semibold">
           <Link href="/">Home</Link>
         </li>
         <li>
