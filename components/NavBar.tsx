@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 
-import Logo from "./Logo";
+import { Logo } from "@/assets/icons";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
