@@ -1,4 +1,7 @@
+import Link from "next/link";
 import { Poppins } from "next/font/google";
+
+import { HeartIcon, GitHubIcon, KeyboardIcon } from "@/assets/icons";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "200" });
 
@@ -9,9 +12,15 @@ const Footer = () => {
       <div className={`${poppins.className} flex justify-between text-sm mt-1`}>
         <p>&copy; WRITEPOST 2023</p>
         <div className="flex gap-2">
-          <span className="material-symbols-sharp">favorite</span>
-          <span className="material-symbols-sharp">folder_open</span>
-          <span className="material-symbols-sharp">psychology</span>
+          <Link href="https://buymeacoffee.com/wajidnv/" target="_blank">
+            <HeartIcon strokeWidth={0.5} />
+          </Link>
+          <Link href="https://github.com/wajid-nv/writepost/" target="_blank">
+            <GitHubIcon strokeWidth={0.5} />
+          </Link>
+          <Link href="https://wajid.me/" target="_blank">
+            <KeyboardIcon strokeWidth={0.5} />
+          </Link>
         </div>
       </div>
     </div>

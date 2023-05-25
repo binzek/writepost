@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 
-import { Logo } from "@/assets/icons";
+import { Logo, MenuIcon, CloseIcon } from "@/assets/icons";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
@@ -29,23 +29,21 @@ const NavBar = () => {
 
       {/* Mobile Navbar */}
       <section className="lg:hidden">
-        <span
-          className="material-symbols-sharp cursor-pointer select-none"
+        <MenuIcon
+          dimension={38}
+          className="cursor-pointer select-none"
           onClick={onMenuOpen}
-        >
-          menu
-        </span>
+        />
         <nav
           className={`absolute left-0 top-0 bg-clr-gray1 w-full h-full items-center justify-center ${
             isMenuOpen ? "flex opacity-100" : "hidden opacity-0"
           }`}
         >
-          <span
-            className="material-symbols-sharp absolute top-4 right-4 cursor-pointer select-none"
+          <CloseIcon
+            dimension={38}
+            className="absolute top-4 right-4 cursor-pointer select-none"
             onClick={onMenuClose}
-          >
-            close
-          </span>
+          />
           <ul className="flex flex-col items-center gap-2 text-lg">
             <li>
               <Link href="/">Home</Link>
