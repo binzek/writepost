@@ -14,7 +14,7 @@ const Home = () => {
         Inspire Passion. Make Your Mark.
       </h1>
       <p
-        className={`${poppins.className} mt-3 md:mt-4 xl:mt-5 text-sm md:text-base`}
+        className={`${poppins.className} mt-3 md:mt-4 xl:mt-5 text-sm md:text-base text-clr-gray4`}
       >
         Explore a vast collection of articles, stories, and insights from
         passionate writers around the world.
