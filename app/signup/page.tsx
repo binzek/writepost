@@ -9,9 +9,11 @@ const SignUp = () => {
     <div
       className={`${poppins.className} mx-auto flex flex-col items-center w-4/5 md:w-1/2 lg:w-1/3 xl:w-1/4 -mt-8`}
     >
-      <h1 className={`${raleway.className} text-2xl`}>Create New Account</h1>
-      <p className="font-light text-clr-gray4 text-sm">
-        Enter your details below
+      <h1 className={`${raleway.className} text-2xl text-center`}>
+        Hey There, Welcome!
+      </h1>
+      <p className="font-light text-clr-gray4 text-sm mt-1 text-center">
+        Sign up below and start your journey
       </p>
       <form action="#" className="w-full my-5 flex flex-col gap-3">
         <div className="flex flex-col">
