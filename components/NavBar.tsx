@@ -27,7 +27,7 @@ const NavBar = () => {
       className={`${poppins.className} flex justify-between font-normal items-center py-3 px-4 lg:py-4 lg:px-5`}
     >
       <a href="/">
-        <Logo />
+        <Logo dimension={115} />
       </a>
 
       {/* Mobile Navbar */}
