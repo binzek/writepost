@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
+import { usePathname } from "next/navigation";
 
 import { Logo, MenuIcon, CloseIcon } from "@/assets/icons";
 
@@ -10,6 +11,8 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const pathname = usePathname();
 
   const onMenuOpen = () => {
     setIsMenuOpen(true);
@@ -45,16 +48,28 @@ const NavBar = () => {
             onClick={onMenuClose}
           />
           <ul className="flex flex-col items-center gap-2 text-lg">
-            <li className="font-semibold">
+            <li
+              className={pathname === "/" ? "font-semibold" : ""}
+              onClick={onMenuClose}
+            >
               <Link href="/">Home</Link>
             </li>
-            <li>
+            <li
+              className={pathname.includes("blogs") ? "font-semibold" : ""}
+              onClick={onMenuClose}
+            >
               <Link href="/blogs">Blogs</Link>
             </li>
-            <li>
+            <li
+              className={pathname.includes("support") ? "font-semibold" : ""}
+              onClick={onMenuClose}
+            >
               <Link href="/support">Support</Link>
             </li>
-            <li className="bg-clr-black text-clr-gray1 py-1 px-4 mt-4">
+            <li
+              className="bg-clr-black text-clr-gray1 py-1 px-4 mt-4"
+              onClick={onMenuClose}
+            >
               <Link href="/signin">Sign in</Link>
             </li>
           </ul>
@@ -63,13 +78,13 @@ const NavBar = () => {
 
       {/* Desktop Navbar */}
       <ul className="hidden lg:flex items-center gap-10 text-lg">
-        <li className="font-semibold">
+        <li className={pathname === "/" ? "font-semibold" : ""}>
           <Link href="/">Home</Link>
         </li>
-        <li>
+        <li className={pathname.includes("blogs") ? "font-semibold" : ""}>
           <Link href="/blogs">Blogs</Link>
         </li>
-        <li>
+        <li className={pathname.includes("support") ? "font-semibold" : ""}>
           <Link href="/support">Support</Link>
         </li>
         <li className="bg-clr-black text-clr-gray1 py-1 px-4">
