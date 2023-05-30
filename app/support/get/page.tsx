@@ -3,7 +3,7 @@ import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/assets/icons";
 
 const GetSupport = () => {
   return (
-    <div className="text-center text-sm lg:text-base flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4 text-center text-sm lg:text-base">
       <h3 className="font-bold">Thanks for using WRITEPOST!</h3>
       <div>
         <p>
@@ -24,7 +24,7 @@ const GetSupport = () => {
       </div>
       <div>
         <p>Or connect me on my social profiles</p>
-        <div className="flex justify-center gap-3 mt-2">
+        <div className="mt-2 flex justify-center gap-3">
           <Link href="https://instagram.com/wajid_nv/" target="_blank">
             <InstagramIcon dimension={26} />
           </Link>

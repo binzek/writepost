@@ -17,7 +17,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,200,0,0"
         />
       </head>
-      <body className="bg-clr-gray1 min-h-screen flex flex-col justify-between selection:bg-clr-black selection:text-clr-gray1">
+      <body className="flex min-h-screen flex-col justify-between bg-clr-gray1 selection:bg-clr-black selection:text-clr-gray1">
         <NavBar />
         {children}
         <Footer />

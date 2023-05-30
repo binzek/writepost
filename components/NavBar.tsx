@@ -24,7 +24,7 @@ const NavBar = () => {
 
   return (
     <div
-      className={`${poppins.className} flex justify-between font-normal items-center py-3 px-4 lg:py-4 lg:px-5`}
+      className={`${poppins.className} flex items-center justify-between px-4 py-3 font-normal lg:px-5 lg:py-4`}
     >
       <a href="/">
         <Logo dimension={115} />
@@ -38,13 +38,13 @@ const NavBar = () => {
           onClick={onMenuOpen}
         />
         <nav
-          className={`absolute left-0 top-0 bg-clr-gray1 w-full h-full items-center justify-center ${
+          className={`absolute left-0 top-0 h-full w-full items-center justify-center bg-clr-gray1 ${
             isMenuOpen ? "flex opacity-100" : "hidden opacity-0"
           }`}
         >
           <CloseIcon
             dimension={38}
-            className="absolute top-4 right-4 cursor-pointer select-none"
+            className="absolute right-4 top-4 cursor-pointer select-none"
             onClick={onMenuClose}
           />
           <ul className="flex flex-col items-center gap-2 text-lg">
@@ -67,7 +67,7 @@ const NavBar = () => {
               <Link href="/support">Support</Link>
             </li>
             <li
-              className="bg-clr-black text-clr-gray1 py-1 px-4 mt-4"
+              className="mt-4 bg-clr-black px-4 py-1 text-clr-gray1"
               onClick={onMenuClose}
             >
               <Link href="/signin">Sign in</Link>
@@ -77,7 +77,7 @@ const NavBar = () => {
       </section>
 
       {/* Desktop Navbar */}
-      <ul className="hidden lg:flex items-center gap-10 text-lg">
+      <ul className="hidden items-center gap-10 text-lg lg:flex">
         <li className={pathname === "/" ? "font-semibold" : ""}>
           <Link href="/">Home</Link>
         </li>
@@ -87,7 +87,7 @@ const NavBar = () => {
         <li className={pathname.includes("support") ? "font-semibold" : ""}>
           <Link href="/support">Support</Link>
         </li>
-        <li className="bg-clr-black text-clr-gray1 py-1 px-4">
+        <li className="bg-clr-black px-4 py-1 text-clr-gray1">
           <Link href="/signin">Sign in</Link>
         </li>
       </ul>

@@ -7,15 +7,15 @@ const raleway = Raleway({ subsets: ["latin"], weight: "600" });
 const SignUp = () => {
   return (
     <div
-      className={`${poppins.className} mx-auto flex flex-col items-center w-4/5 md:w-1/2 lg:w-1/3 xl:w-1/4 -mt-8`}
+      className={`${poppins.className} mx-auto -mt-8 flex w-4/5 flex-col items-center md:w-1/2 lg:w-1/3 xl:w-1/4`}
     >
-      <h1 className={`${raleway.className} text-2xl text-center`}>
+      <h1 className={`${raleway.className} text-center text-2xl`}>
         Hey There, Welcome!
       </h1>
-      <p className="font-light text-clr-gray4 text-sm mt-1 text-center">
+      <p className="mt-1 text-center text-sm font-light text-clr-gray4">
         Sign up below and start your journey
       </p>
-      <form action="#" className="w-full my-5 flex flex-col gap-3">
+      <form action="#" className="my-5 flex w-full flex-col gap-3">
         <div className="flex flex-col">
           <label htmlFor="name" className="text-sm">
             Name
@@ -24,7 +24,7 @@ const SignUp = () => {
             type="text"
             id="name"
             placeholder="John Doe"
-            className="bg-transparent border border-clr-gray4 py-1 px-2 placeholder:text-clr-gray2 font-light text-sm outline-none"
+            className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray2"
           />
         </div>
         <div className="flex flex-col">
@@ -35,7 +35,7 @@ const SignUp = () => {
             type="email"
             id="email"
             placeholder="johndoe@example.com"
-            className="bg-transparent border border-clr-gray4 py-1 px-2 placeholder:text-clr-gray2 font-light text-sm outline-none"
+            className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray2"
           />
         </div>
         <div className="flex flex-col">
@@ -46,17 +46,17 @@ const SignUp = () => {
             type="password"
             id="password"
             placeholder="******"
-            className="bg-transparent border border-clr-gray4 py-1 px-2 placeholder:text-clr-gray2 font-light text-sm outline-none"
+            className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray2"
           />
         </div>
         <button
           type="submit"
-          className="bg-clr-black text-clr-gray1 py-2 w-full text-sm mt-2"
+          className="mt-2 w-full bg-clr-black py-2 text-sm text-clr-gray1"
         >
           Create Account
         </button>
       </form>
-      <p className="font-light text-sm">
+      <p className="text-sm font-light">
         Already have an account?{" "}
         <Link href="/signin" className="font-medium">
           Sign in

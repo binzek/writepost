@@ -15,9 +15,9 @@ function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className={`${poppins.className} border-2 border-clr-black w-11/12 md:w-3/4 lg:w-1/2 xl:w-1/3 mx-auto`}
+      className={`${poppins.className} mx-auto w-11/12 border-2 border-clr-black md:w-3/4 lg:w-1/2 xl:w-1/3`}
     >
-      <div className="border-b-2 border-b-clr-black flex justify-between font-light text-center lg:text-lg">
+      <div className="flex justify-between border-b-2 border-b-clr-black text-center font-light lg:text-lg">
         <Link
           href="/support/get"
           className={`${
