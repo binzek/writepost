@@ -1,7 +1,13 @@
-import React from "react";
+"use client";
 
-const Support = () => {
-  return <div>Support</div>;
-};
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+function Support() {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/support/give");
+  }, []);
+}
 
 export default Support;
