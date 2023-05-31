@@ -1,12 +1,17 @@
 "use client";
 
-import { BmcButton } from "@/assets/icons";
-import React from "react";
-import GitHubButton from "react-github-btn";
+import { FC } from "react";
 import Link from "next/link";
-import { InstagramIcon, TwitterIcon, LinkedInIcon } from "@/assets/icons";
+import GitHubButton from "react-github-btn";
 
-const GiveSupport = () => {
+import {
+  InstagramIcon,
+  TwitterIcon,
+  LinkedInIcon,
+  BmcButton,
+} from "@/assets/icons";
+
+const GiveSupportPage: FC = () => {
   return (
     <div className="flex flex-col gap-4 text-center text-sm lg:text-base">
       <h3 className="font-bold">Thanks for using WRITEPOST!</h3>
@@ -49,4 +54,4 @@ const GiveSupport = () => {
   );
 };
 
-export default GiveSupport;
+export default GiveSupportPage;

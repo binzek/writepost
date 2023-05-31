@@ -1,7 +1,9 @@
+import { FC } from "react";
 import Link from "next/link";
+
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/assets/icons";
 
-const GetSupport = () => {
+const GetSupportPage: FC = () => {
   return (
     <div className="flex flex-col items-center gap-4 text-center text-sm lg:text-base">
       <h3 className="font-bold">Thanks for using WRITEPOST!</h3>
@@ -40,4 +42,4 @@ const GetSupport = () => {
   );
 };
 
-export default GetSupport;
+export default GetSupportPage;

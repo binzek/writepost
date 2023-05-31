@@ -1,16 +1,20 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { Poppins } from "next/font/google";
+import { FC, ReactNode } from "react";
 import Link from "next/link";
+import { Poppins } from "next/font/google";
 import { usePathname } from "next/navigation";
+
+interface Props {
+  children: ReactNode;
+}
 
 const poppins = Poppins({
   subsets: ["latin", "devanagari", "latin-ext"],
   weight: ["300", "400", "500", "600"],
 });
 
-function RootLayout({ children }: { children: React.ReactNode }) {
+const SupportLayout: FC<Props> = ({ children }) => {
   const pathname = usePathname().split("/")[2];
 
   return (
@@ -38,6 +42,6 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       <div className="p-4">{children}</div>
     </div>
   );
-}
+};
 
-export default RootLayout;
+export default SupportLayout;

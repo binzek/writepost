@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FC, useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 import { usePathname } from "next/navigation";
@@ -12,7 +12,7 @@ const poppins = Poppins({
   weight: ["400", "600"],
 });
 
-const NavBar = () => {
+const NavBar: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname();

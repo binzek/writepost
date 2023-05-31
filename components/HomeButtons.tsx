@@ -1,3 +1,4 @@
+import { FC } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 
@@ -6,7 +7,7 @@ const poppins = Poppins({
   weight: "400",
 });
 
-const HomeButtons = () => {
+const HomeButtons: FC = () => {
   return (
     <div
       className={`${poppins.className} flex justify-center gap-5 text-sm md:gap-7 lg:gap-8 lg:text-base`}

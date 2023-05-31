@@ -1,4 +1,6 @@
-const SignInForm = () => {
+import { FC } from "react";
+
+const SignInForm: FC = () => {
   return (
     <form action="#" className="my-5 flex w-full flex-col gap-3">
       <div className="flex flex-col">

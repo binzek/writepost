@@ -106,17 +106,9 @@ export const CloseIcon = ({
   );
 };
 
-export const HeartIcon = ({
-  className,
-  color,
-  dimension,
-  onClick,
-  strokeWidth,
-}: IconProps) => {
+export const HeartIcon = ({ color, dimension, strokeWidth }: IconProps) => {
   return (
     <svg
-      className={className}
-      onClick={onClick}
       width={dimension || 24}
       height={dimension || 24}
       viewBox="0 0 24 24"
@@ -134,17 +126,9 @@ export const HeartIcon = ({
   );
 };
 
-export const GitHubIcon = ({
-  className,
-  color,
-  dimension,
-  onClick,
-  strokeWidth,
-}: IconProps) => {
+export const GitHubIcon = ({ color, dimension, strokeWidth }: IconProps) => {
   return (
     <svg
-      className={className}
-      onClick={onClick}
       width={dimension || 24}
       height={dimension || 24}
       viewBox="0 0 24 24"
@@ -169,17 +153,9 @@ export const GitHubIcon = ({
   );
 };
 
-export const KeyboardIcon = ({
-  className,
-  color,
-  dimension,
-  onClick,
-  strokeWidth,
-}: IconProps) => {
+export const KeyboardIcon = ({ color, dimension, strokeWidth }: IconProps) => {
   return (
     <svg
-      onClick={onClick}
-      className={className}
       width={dimension || 24}
       height={dimension || 24}
       viewBox="0 0 24 24"
@@ -245,13 +221,7 @@ export const KeyboardIcon = ({
   );
 };
 
-export const InstagramIcon = ({
-  className,
-  color,
-  dimension,
-  onClick,
-  strokeWidth,
-}: IconProps) => {
+export const InstagramIcon = ({ color, dimension }: IconProps) => {
   return (
     <svg
       width={dimension || 24}

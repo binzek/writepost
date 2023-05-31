@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Raleway, Poppins } from "next/font/google";
 
 const raleway = Raleway({
@@ -9,7 +10,7 @@ const poppins = Poppins({
   weight: "300",
 });
 
-const Home = () => {
+const Home: FC = () => {
   return (
     <div className="-mt-16 text-center">
       <h1

@@ -3,11 +3,12 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-function Support() {
+const SupportPage: () => void = () => {
   const router = useRouter();
+
   useEffect(() => {
     router.push("/support/give");
   }, []);
-}
+};
 
-export default Support;
+export default SupportPage;

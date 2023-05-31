@@ -1,3 +1,4 @@
+import { FC } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 
@@ -8,7 +9,7 @@ const poppins = Poppins({
   weight: "200",
 });
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
     <div className="mx-auto mb-2 w-[95%] lg:w-[98%]">
       <div className="h-[1px] w-full bg-clr-gray3" />

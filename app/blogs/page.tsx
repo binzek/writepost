@@ -1,7 +1,7 @@
-import React from "react";
+import { FC } from "react";
 
-const Blogs = () => {
+const BlogsPage: FC = () => {
   return <div>Blogs</div>;
 };
 
-export default Blogs;
+export default BlogsPage;

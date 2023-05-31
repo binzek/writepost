@@ -1,5 +1,7 @@
+import { FC } from "react";
 import Link from "next/link";
 import { Poppins, Raleway } from "next/font/google";
+
 import SignUpForm from "@/components/SignUpForm";
 
 const poppins = Poppins({
@@ -11,7 +13,7 @@ const raleway = Raleway({
   weight: "600",
 });
 
-const SignUp = () => {
+const SignUpPage: FC = () => {
   return (
     <div
       className={`${poppins.className} mx-auto -mt-8 flex w-4/5 flex-col items-center md:w-1/2 lg:w-1/3 xl:w-1/4`}
@@ -33,4 +35,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpPage;

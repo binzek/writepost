@@ -1,14 +1,18 @@
-import React from "react";
+import { FC, ReactNode } from "react";
 
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
+interface Props {
+  children: ReactNode;
+}
+
 export const metadata = {
   title: "WRITEPOST",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const AppLayout: FC<Props> = ({ children }) => {
   return (
     <html lang="en">
       <head>
@@ -26,4 +30,4 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default RootLayout;
+export default AppLayout;
