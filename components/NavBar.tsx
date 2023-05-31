@@ -7,7 +7,10 @@ import { usePathname } from "next/navigation";
 
 import { Logo, MenuIcon, CloseIcon } from "@/assets/icons";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
+const poppins = Poppins({
+  subsets: ["latin", "devanagari", "latin-ext"],
+  weight: ["400", "600"],
+});
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

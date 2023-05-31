@@ -3,7 +3,10 @@ import { Poppins } from "next/font/google";
 
 import { HeartIcon, GitHubIcon, KeyboardIcon } from "@/assets/icons";
 
-const poppins = Poppins({ subsets: ["latin"], weight: "200" });
+const poppins = Poppins({
+  subsets: ["latin", "devanagari", "latin-ext"],
+  weight: "200",
+});
 
 const Footer = () => {
   return (

@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { Poppins, Raleway } from "next/font/google";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["300", "400", "500"] });
-const raleway = Raleway({ subsets: ["latin"], weight: "600" });
+const poppins = Poppins({
+  subsets: ["latin", "devanagari", "latin-ext"],
+  weight: ["300", "400", "500"],
+});
+const raleway = Raleway({
+  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext", "vietnamese"],
+  weight: "600",
+});
 
 const SignUp = () => {
   return (

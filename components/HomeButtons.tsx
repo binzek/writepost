@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 
-const poppins = Poppins({ subsets: ["latin"], weight: "400" });
+const poppins = Poppins({
+  subsets: ["latin", "devanagari", "latin-ext"],
+  weight: "400",
+});
 
 const HomeButtons = () => {
   return (

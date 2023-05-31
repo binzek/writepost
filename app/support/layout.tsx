@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const poppins = Poppins({
-  subsets: ["latin"],
+  subsets: ["latin", "devanagari", "latin-ext"],
   weight: ["300", "400", "500", "600"],
 });
 
