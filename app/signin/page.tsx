@@ -1,10 +1,14 @@
+"use client";
+
 // Library imports
-import { FC } from "react";
+import { FC, FormEvent, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Poppins, Raleway } from "next/font/google";
 
 // Local imports
 import SignInForm from "@/components/SignInForm";
+import { account } from "@/api/appwrite";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -17,6 +21,27 @@ const raleway = Raleway({
 });
 
 const SignInPage: FC = () => {
+  const router = useRouter();
+
+  // States for email and password inputs
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // Function to create an email session
+  const createEmailSession = () => {
+    account.createEmailSession(email, password).then(() => {
+      setEmail("");
+      setPassword("");
+      router.push("/");
+    });
+  };
+
+  // Function to handle form submit
+  const handleSignIn = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    createEmailSession();
+  };
+
   return (
     <div
       className={`${poppins.className} mx-auto -mt-8 flex w-4/5 flex-col items-center md:w-1/2 lg:w-1/3 xl:w-1/4`}
@@ -27,7 +52,13 @@ const SignInPage: FC = () => {
       <p className="mt-1 text-center text-sm font-light text-clr-gray4">
         Sign in below and continue your journey
       </p>
-      <SignInForm />
+      <SignInForm
+        email={email}
+        password={password}
+        setEmail={setEmail}
+        setPassword={setPassword}
+        handleSubmit={handleSignIn}
+      />
       <p className="text-sm font-light">
         Don't have an account?{" "}
         <Link href="/signup" className="font-medium">
