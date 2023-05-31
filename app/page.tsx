@@ -1,5 +1,7 @@
+// Library imports
 import { FC } from "react";
 
+// Local imports
 import Home from "@/components/Home";
 import HomeButtons from "@/components/HomeButtons";
 

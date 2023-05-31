@@ -1,13 +1,17 @@
+// Library imports
 import { FC, ReactNode } from "react";
 
+// Local imports
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
+// Layout props
 interface Props {
   children: ReactNode;
 }
 
+// Meta informations of the entire app
 export const metadata = {
   title: "WRITEPOST",
 };

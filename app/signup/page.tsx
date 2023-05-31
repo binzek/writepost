@@ -1,9 +1,12 @@
+// Library imports
 import { FC } from "react";
 import Link from "next/link";
 import { Poppins, Raleway } from "next/font/google";
 
+// Local imports
 import SignUpForm from "@/components/SignUpForm";
 
+// Fonts initialization
 const poppins = Poppins({
   subsets: ["latin", "devanagari", "latin-ext"],
   weight: ["300", "400", "500"],

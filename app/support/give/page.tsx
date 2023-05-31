@@ -1,9 +1,11 @@
 "use client";
 
+// Library imports
 import { FC } from "react";
 import Link from "next/link";
 import GitHubButton from "react-github-btn";
 
+// Local imports
 import {
   InstagramIcon,
   TwitterIcon,

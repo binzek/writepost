@@ -1,26 +1,33 @@
 "use client";
 
+// Library imports
 import { FC, useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 import { usePathname } from "next/navigation";
 
+// Local imports
 import { Logo, MenuIcon, CloseIcon } from "@/assets/icons";
 
+// Fonts initialization
 const poppins = Poppins({
   subsets: ["latin", "devanagari", "latin-ext"],
   weight: ["400", "600"],
 });
 
 const NavBar: FC = () => {
+  // State for navbar menu to choose its open/close state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Get current path name after domain
   const pathname = usePathname();
 
+  // Open navbar menu
   const onMenuOpen = () => {
     setIsMenuOpen(true);
   };
 
+  // Close navbar menu
   const onMenuClose = () => {
     setIsMenuOpen(false);
   };
@@ -33,7 +40,7 @@ const NavBar: FC = () => {
         <Logo dimension={115} />
       </a>
 
-      {/* Mobile Navbar */}
+      {/* Vertical fullscreen navbar menu for smaller devices */}
       <section className="lg:hidden">
         <MenuIcon
           dimension={38}
@@ -79,7 +86,7 @@ const NavBar: FC = () => {
         </nav>
       </section>
 
-      {/* Desktop Navbar */}
+      {/* Horizontal navbar for larger devices */}
       <ul className="hidden items-center gap-10 text-lg lg:flex">
         <li className={pathname === "/" ? "font-semibold" : ""}>
           <Link href="/">Home</Link>

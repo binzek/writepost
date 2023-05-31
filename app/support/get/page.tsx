@@ -1,6 +1,8 @@
+// Library imports
 import { FC } from "react";
 import Link from "next/link";
 
+// Local imports
 import { InstagramIcon, LinkedInIcon, TwitterIcon } from "@/assets/icons";
 
 const GetSupportPage: FC = () => {

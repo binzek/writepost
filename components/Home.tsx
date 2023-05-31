@@ -1,6 +1,8 @@
+// Library imports
 import { FC } from "react";
 import { Raleway, Poppins } from "next/font/google";
 
+// Fonts initialization
 const raleway = Raleway({
   subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext", "vietnamese"],
   weight: "600",

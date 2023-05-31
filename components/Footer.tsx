@@ -1,9 +1,12 @@
+// Library imports
 import { FC } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 
+// Local imports
 import { HeartIcon, GitHubIcon, KeyboardIcon } from "@/assets/icons";
 
+// Fonts initialization
 const poppins = Poppins({
   subsets: ["latin", "devanagari", "latin-ext"],
   weight: "200",
