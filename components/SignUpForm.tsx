@@ -1,14 +1,39 @@
 // Library imports
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction, FormEvent } from "react";
 
-const SignUpForm: FC = () => {
+// Sign up form props
+interface Props {
+  email: string;
+  password: string;
+  name: string;
+  setEmail: Dispatch<SetStateAction<string>>;
+  setPassword: Dispatch<SetStateAction<string>>;
+  setName: Dispatch<SetStateAction<string>>;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+}
+
+const SignUpForm: FC<Props> = ({
+  email,
+  password,
+  name,
+  setEmail,
+  setPassword,
+  setName,
+  handleSubmit,
+}) => {
   return (
-    <form action="#" className="my-5 flex w-full flex-col gap-3">
+    <form
+      action="#"
+      className="my-5 flex w-full flex-col gap-3"
+      onSubmit={handleSubmit}
+    >
       <div className="flex flex-col">
         <label htmlFor="name" className="text-sm">
           Name
         </label>
         <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           type="text"
           id="name"
           placeholder="John Doe"
@@ -20,6 +45,8 @@ const SignUpForm: FC = () => {
           Email
         </label>
         <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           type="email"
           id="email"
           placeholder="johndoe@example.com"
@@ -31,6 +58,8 @@ const SignUpForm: FC = () => {
           Password
         </label>
         <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           type="password"
           id="password"
           placeholder="******"
