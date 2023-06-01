@@ -1,13 +1,14 @@
 "use client";
 
 // Library imports
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // Local imports
 import { Logo, MenuIcon, CloseIcon } from "@/assets/icons";
+import { account } from "@/api/appwrite";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -19,8 +20,13 @@ const NavBar: FC = () => {
   // State for navbar menu to choose its open/close state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // State to check wether if the user present or not
+  const [isUser, setIsUser] = useState(false);
+
   // Get current path name after domain
   const pathname = usePathname();
+
+  const router = useRouter();
 
   // Open navbar menu
   const onMenuOpen = () => {
@@ -31,6 +37,16 @@ const NavBar: FC = () => {
   const onMenuClose = () => {
     setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    account
+      .get()
+      .then((userData) => {
+        userData ? setIsUser(true) : setIsUser(false);
+        router.push("/dashboard");
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div
@@ -62,7 +78,11 @@ const NavBar: FC = () => {
               className={pathname === "/" ? "font-semibold" : ""}
               onClick={onMenuClose}
             >
-              <Link href="/">Home</Link>
+              {isUser ? (
+                <Link href="/dashboard">Dashboard</Link>
+              ) : (
+                <Link href="/">Home</Link>
+              )}
             </li>
             <li
               className={pathname.includes("blogs") ? "font-semibold" : ""}
@@ -88,8 +108,12 @@ const NavBar: FC = () => {
 
       {/* Horizontal navbar for larger devices */}
       <ul className="hidden items-center gap-10 text-lg lg:flex">
-        <li className={pathname === "/" ? "font-semibold" : ""}>
-          <Link href="/">Home</Link>
+        <li className={pathname === "/dashboard" ? "font-semibold" : ""}>
+          {isUser ? (
+            <Link href="/dashboard">Dashboard</Link>
+          ) : (
+            <Link href="/">Home</Link>
+          )}
         </li>
         <li className={pathname.includes("blogs") ? "font-semibold" : ""}>
           <Link href="/blogs">Blogs</Link>
