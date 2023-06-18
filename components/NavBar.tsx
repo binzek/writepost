@@ -49,7 +49,7 @@ const NavBar: FC = () => {
 
   return (
     <div
-      className={`${poppins.className} flex items-center justify-between px-4 py-3 font-normal lg:px-5 lg:py-4`}
+      className={`${poppins.className} z-50 flex items-center justify-between px-4 py-3 font-normal lg:px-5 lg:py-4`}
     >
       <a href="/">
         <Logo dimension={115} />
