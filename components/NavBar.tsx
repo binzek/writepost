@@ -43,7 +43,6 @@ const NavBar: FC = () => {
       .get()
       .then((userData) => {
         userData ? setIsUser(true) : setIsUser(false);
-        router.push("/dashboard");
       })
       .catch((error) => console.log(error));
   }, []);
@@ -78,11 +77,7 @@ const NavBar: FC = () => {
               className={pathname === "/" ? "font-semibold" : ""}
               onClick={onMenuClose}
             >
-              {isUser ? (
-                <Link href="/dashboard">Dashboard</Link>
-              ) : (
-                <Link href="/">Home</Link>
-              )}
+              <Link href="/">Home</Link>
             </li>
             <li
               className={pathname.includes("blogs") ? "font-semibold" : ""}
@@ -100,7 +95,11 @@ const NavBar: FC = () => {
               className="mt-4 bg-clr-black px-4 py-1 text-clr-gray1"
               onClick={onMenuClose}
             >
-              <Link href="/signin">Sign in</Link>
+              {isUser ? (
+                <Link href="/dashboard">Go to Dashboard</Link>
+              ) : (
+                <Link href="/signin">Sign in</Link>
+              )}
             </li>
           </ul>
         </nav>
@@ -108,12 +107,8 @@ const NavBar: FC = () => {
 
       {/* Horizontal navbar for larger devices */}
       <ul className="hidden items-center gap-10 text-lg lg:flex">
-        <li className={pathname === "/dashboard" ? "font-semibold" : ""}>
-          {isUser ? (
-            <Link href="/dashboard">Dashboard</Link>
-          ) : (
-            <Link href="/">Home</Link>
-          )}
+        <li className={pathname === "/" ? "font-semibold" : ""}>
+          <Link href="/">Home</Link>
         </li>
         <li className={pathname.includes("blogs") ? "font-semibold" : ""}>
           <Link href="/blogs">Blogs</Link>
@@ -122,7 +117,11 @@ const NavBar: FC = () => {
           <Link href="/support">Support</Link>
         </li>
         <li className="bg-clr-black px-4 py-1 text-clr-gray1">
-          <Link href="/signin">Sign in</Link>
+          {isUser ? (
+            <Link href="/dashboard">Go to Dashboard</Link>
+          ) : (
+            <Link href="/signin">Sign in</Link>
+          )}
         </li>
       </ul>
     </div>
