@@ -57,13 +57,13 @@ const NavBar: FC = () => {
       </a>
       {isSideBarOpen ? (
         <CloseIcon
-          dimension={38}
+          dimension={35}
           className="right-4 top-4 z-20 cursor-pointer select-none"
           onClick={onSideBarClose}
         />
       ) : (
         <MenuIcon
-          dimension={38}
+          dimension={35}
           className="z-20 cursor-pointer select-none"
           onClick={onSideBarOpen}
         />
