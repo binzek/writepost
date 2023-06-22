@@ -9,6 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 // Local imports
 import { Logo, MenuIcon, CloseIcon } from "@/assets/icons";
 import { account } from "@/api/appwrite";
+import SideBar from "./SideBar";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -18,7 +19,7 @@ const poppins = Poppins({
 
 const NavBar: FC = () => {
   // State for navbar menu to choose its open/close state
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   // State to check wether if the user present or not
   const [isUser, setIsUser] = useState(false);
@@ -29,13 +30,13 @@ const NavBar: FC = () => {
   const router = useRouter();
 
   // Open navbar menu
-  const onMenuOpen = () => {
-    setIsMenuOpen(true);
+  const onSideBarOpen = () => {
+    setIsSideBarOpen(true);
   };
 
   // Close navbar menu
-  const onMenuClose = () => {
-    setIsMenuOpen(false);
+  const onSideBarClose = () => {
+    setIsSideBarOpen(false);
   };
 
   useEffect(() => {
@@ -49,91 +50,25 @@ const NavBar: FC = () => {
 
   return (
     <div
-      className={`${poppins.className} z-50 flex items-center justify-between px-4 py-3 font-normal lg:px-5 lg:py-4`}
+      className={`${poppins.className} relative flex items-center justify-between px-4 py-3 lg:px-5 lg:py-4`}
     >
       <a href="/">
         <Logo dimension={115} />
       </a>
-
-      {/* Vertical fullscreen navbar menu for smaller devices */}
-      <section className="flex gap-2 lg:hidden">
-        <Link href="/profile">
-          <div className="h-10 w-10 rounded-full bg-clr-gray3"></div>
-        </Link>
+      {isSideBarOpen ? (
+        <CloseIcon
+          dimension={38}
+          className="right-4 top-4 z-20 cursor-pointer select-none"
+          onClick={onSideBarClose}
+        />
+      ) : (
         <MenuIcon
           dimension={38}
-          className="cursor-pointer select-none"
-          onClick={onMenuOpen}
+          className="z-20 cursor-pointer select-none"
+          onClick={onSideBarOpen}
         />
-        <nav
-          className={`absolute left-0 top-0 h-full w-full items-center justify-center bg-clr-gray1 ${
-            isMenuOpen ? "flex opacity-100" : "hidden opacity-0"
-          }`}
-        >
-          <CloseIcon
-            dimension={38}
-            className="absolute right-4 top-4 cursor-pointer select-none"
-            onClick={onMenuClose}
-          />
-          <ul className="flex flex-col items-center gap-2 text-lg">
-            <li
-              className={pathname === "/" ? "font-semibold" : ""}
-              onClick={onMenuClose}
-            >
-              <Link href="/">Home</Link>
-            </li>
-            <li
-              className={pathname.includes("blogs") ? "font-semibold" : ""}
-              onClick={onMenuClose}
-            >
-              <Link href="/blogs">Blogs</Link>
-            </li>
-            <li
-              className={pathname.includes("support") ? "font-semibold" : ""}
-              onClick={onMenuClose}
-            >
-              <Link href="/support">Support</Link>
-            </li>
-            <li
-              className="mt-4 bg-clr-black px-4 py-1 text-clr-gray1"
-              onClick={onMenuClose}
-            >
-              {isUser ? (
-                <Link href="/new">New Post</Link>
-              ) : (
-                <Link href="/signin">Sign in</Link>
-              )}
-            </li>
-          </ul>
-        </nav>
-      </section>
-
-      {/* Horizontal navbar for larger devices */}
-      <ul className="hidden items-center gap-10 text-lg lg:flex">
-        <li className={pathname === "/" ? "font-semibold" : ""}>
-          <Link href="/">Home</Link>
-        </li>
-        <li className={pathname.includes("blogs") ? "font-semibold" : ""}>
-          <Link href="/blogs">Blogs</Link>
-        </li>
-        <li className={pathname.includes("support") ? "font-semibold" : ""}>
-          <Link href="/support">Support</Link>
-        </li>
-        <li className="bg-clr-black px-4 py-1 text-clr-gray1">
-          {isUser ? (
-            <Link href="/new">New Post</Link>
-          ) : (
-            <Link href="/signin">Sign in</Link>
-          )}
-        </li>
-        {isUser && (
-          <li>
-            <Link href="/profile">
-              <div className="h-10 w-10 rounded-full bg-clr-gray3"></div>
-            </Link>
-          </li>
-        )}
-      </ul>
+      )}
+      <SideBar isOpen={isSideBarOpen} />
     </div>
   );
 };
