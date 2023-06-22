@@ -33,7 +33,7 @@ const SignInForm: FC<Props> = ({
           type="email"
           id="email"
           placeholder="johndoe@example.com"
-          className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray2"
+          className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray3"
         />
       </div>
       <div className="flex flex-col">
@@ -46,7 +46,7 @@ const SignInForm: FC<Props> = ({
           type="password"
           id="password"
           placeholder="******"
-          className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray2"
+          className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray3"
         />
       </div>
       <button
