@@ -1,14 +1,11 @@
 "use client";
 
 // Library imports
-import { FC, useEffect, useState } from "react";
-import Link from "next/link";
+import { FC, useState } from "react";
 import { Poppins } from "next/font/google";
-import { usePathname, useRouter } from "next/navigation";
 
 // Local imports
 import { Logo, MenuIcon, CloseIcon } from "@/assets/icons";
-import { account } from "@/api/appwrite";
 import SideBar from "./SideBar";
 
 // Fonts initialization
@@ -18,35 +15,18 @@ const poppins = Poppins({
 });
 
 const NavBar: FC = () => {
-  // State for navbar menu to choose its open/close state
+  // State for sidebar to choose its open/close state
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
-  // State to check wether if the user present or not
-  const [isUser, setIsUser] = useState(false);
-
-  // Get current path name after domain
-  const pathname = usePathname();
-
-  const router = useRouter();
-
-  // Open navbar menu
+  // Open sidebar
   const onSideBarOpen = () => {
     setIsSideBarOpen(true);
   };
 
-  // Close navbar menu
+  // Close sidebar
   const onSideBarClose = () => {
     setIsSideBarOpen(false);
   };
-
-  useEffect(() => {
-    account
-      .get()
-      .then((userData) => {
-        userData ? setIsUser(true) : setIsUser(false);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <div
