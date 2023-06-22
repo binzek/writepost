@@ -56,7 +56,10 @@ const NavBar: FC = () => {
       </a>
 
       {/* Vertical fullscreen navbar menu for smaller devices */}
-      <section className="lg:hidden">
+      <section className="flex gap-2 lg:hidden">
+        <Link href="/profile">
+          <div className="h-10 w-10 rounded-full bg-clr-gray3"></div>
+        </Link>
         <MenuIcon
           dimension={38}
           className="cursor-pointer select-none"
@@ -96,7 +99,7 @@ const NavBar: FC = () => {
               onClick={onMenuClose}
             >
               {isUser ? (
-                <Link href="/dashboard">Go to Dashboard</Link>
+                <Link href="/new">New Post</Link>
               ) : (
                 <Link href="/signin">Sign in</Link>
               )}
@@ -118,11 +121,18 @@ const NavBar: FC = () => {
         </li>
         <li className="bg-clr-black px-4 py-1 text-clr-gray1">
           {isUser ? (
-            <Link href="/dashboard">Go to Dashboard</Link>
+            <Link href="/new">New Post</Link>
           ) : (
             <Link href="/signin">Sign in</Link>
           )}
         </li>
+        {isUser && (
+          <li>
+            <Link href="/profile">
+              <div className="h-10 w-10 rounded-full bg-clr-gray3"></div>
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );
