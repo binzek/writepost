@@ -15,7 +15,7 @@ const HomeButtons: FC = () => {
       className={`${poppins.className} flex justify-center gap-5 text-sm md:gap-7 lg:gap-8 lg:text-base`}
     >
       <Link
-        href="/signup"
+        href="/new"
         className="border-2 border-clr-black bg-clr-black px-3 py-2 text-clr-gray1"
       >
         Start Writing
