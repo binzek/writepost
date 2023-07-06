@@ -56,18 +56,9 @@ const Home: FC = () => {
       <p
         className={`${poppins.className} mt-3 text-sm text-clr-gray4 md:mt-4 md:text-base xl:mt-5`}
       >
-        {isUser
-          ? `Signed in as ${userName} (${userMailId})`
-          : "Explore a vast collection of articles, stories, and insights from passionate writers around the world."}
+        Explore a vast collection of articles, stories, and insights from
+        passionate writers around the world.
       </p>
-      {isUser && (
-        <button
-          className="mt-2 bg-clr-black px-3 py-2 text-clr-gray1"
-          onClick={handleSignOut}
-        >
-          Sign out
-        </button>
-      )}
     </div>
   );
 };
