@@ -44,7 +44,7 @@ const AppLayout: FC<Props> = ({ children }) => {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,200,0,0"
         />
       </head>
-      <body className="flex min-h-screen flex-col justify-between bg-clr-gray1 selection:bg-clr-black selection:text-clr-gray1">
+      <body className="flex h-screen flex-col justify-between bg-clr-gray1 selection:bg-clr-black selection:text-clr-gray1">
         <UserContext.Provider value={{ user: isUser }}>
           <NavBar />
           {children}
