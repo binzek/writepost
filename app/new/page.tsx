@@ -39,7 +39,7 @@ const NewPage: FC = () => {
           "blogs-collection",
           ID.unique(),
           {
-            user_id: user.$id,
+            user_name: user.name,
             title,
             content,
           }
