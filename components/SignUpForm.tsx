@@ -22,11 +22,7 @@ const SignUpForm: FC<Props> = ({
   handleSubmit,
 }) => {
   return (
-    <form
-      action="#"
-      className="my-5 flex w-full flex-col gap-3"
-      onSubmit={handleSubmit}
-    >
+    <form className="my-5 flex w-full flex-col gap-3" onSubmit={handleSubmit}>
       <div className="flex flex-col">
         <label htmlFor="name" className="text-sm">
           Name
@@ -37,6 +33,7 @@ const SignUpForm: FC<Props> = ({
           type="text"
           id="name"
           placeholder="John Doe"
+          maxLength={30}
           className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray3"
         />
       </div>

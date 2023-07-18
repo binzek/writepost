@@ -17,6 +17,8 @@ interface Props {
 // Meta informations of the entire app
 export const metadata = {
   title: "WRITEPOST",
+  description:
+    "Explore a vast collection of short stories and insights from passionate writers around the world.",
 };
 
 // Create context
@@ -26,25 +28,19 @@ const AppLayout: FC<Props> = ({ children }) => {
   // State to pass user's status
   const [isUser, setIsUser] = useState(false);
 
+  // Get user's status on app mount
   useEffect(() => {
     account
       .get()
       .then((response) => {
         response ? setIsUser(true) : setIsUser(false);
-        console.log(response);
       })
       .catch((error) => console.error(error));
   }, []);
 
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,200,0,0"
-        />
-      </head>
-      <body className="flex h-screen flex-col justify-between bg-clr-gray1 selection:bg-clr-black selection:text-clr-gray1">
+      <body className="flex h-screen flex-col justify-between bg-clr-gray1 text-clr-black selection:bg-clr-gray3 selection:text-clr-gray1">
         <UserContext.Provider value={{ user: isUser }}>
           <NavBar />
           {children}

@@ -29,8 +29,6 @@ const SignUpPage: FC = () => {
   if (user) {
     redirect("/profile");
   } else {
-    const router = useRouter();
-
     // States for email, password and name inputs
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

@@ -19,12 +19,12 @@ const NavBar: FC = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   // Open sidebar
-  const onSideBarOpen = () => {
+  const openSideBar = () => {
     setIsSideBarOpen(true);
   };
 
   // Close sidebar
-  const onSideBarClose = () => {
+  const closeSideBar = () => {
     setIsSideBarOpen(false);
   };
 
@@ -39,13 +39,13 @@ const NavBar: FC = () => {
         <CloseIcon
           dimension={35}
           className="right-4 top-4 z-20 cursor-pointer select-none"
-          onClick={onSideBarClose}
+          onClick={closeSideBar}
         />
       ) : (
         <MenuIcon
           dimension={35}
           className="z-20 cursor-pointer select-none"
-          onClick={onSideBarOpen}
+          onClick={openSideBar}
         />
       )}
       <SideBar isOpen={isSideBarOpen} />

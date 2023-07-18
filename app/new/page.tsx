@@ -25,38 +25,40 @@ const NewPage: FC = () => {
   // Get user's status
   const { user } = useContext(UserContext);
 
-  // Form states
+  // State for story title
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  // State for story body
+  const [body, setBody] = useState("");
 
-  // Function to create new post on database
-  const createNewBlog = () => {
-    account
-      .get()
-      .then((user) => {
-        databases.createDocument(
-          "writepost-db",
-          "blogs-collection",
-          ID.unique(),
-          {
-            user_name: user.name,
-            title,
-            content,
-          }
-        );
-      })
-      .then((res) => {
-        console.log(res);
-        setTitle("");
-        setContent("");
-      })
-      .catch((err) => console.error(err));
+  // Function to create new story into database
+  const postNewStory = () => {
+    confirm("Are you sure to post the story?") &&
+      account
+        .get()
+        .then((user) => {
+          databases.createDocument(
+            "writepost-db",
+            "stories-collection",
+            ID.unique(),
+            {
+              publisher: user.name,
+              title,
+              body,
+            }
+          );
+        })
+        .then(() => {
+          alert("Your story has been posted!");
+          setTitle("");
+          setBody("");
+        })
+        .catch((error) => console.error(error));
   };
 
-  // Function to handle create form submission
+  // Function to handle new story form submission
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createNewBlog();
+    postNewStory();
   };
 
   if (user) {
@@ -65,13 +67,13 @@ const NewPage: FC = () => {
         className={`${poppins.className} mx-auto -mt-8 flex w-5/6 flex-col items-center md:w-2/3 lg:w-1/2`}
       >
         <h1 className={`${raleway.className} text-center text-2xl`}>
-          Create New Blog Post
+          Write a New Short Story / Insight
         </h1>
         <NewForm
           title={title}
-          content={content}
+          body={body}
           setTitle={setTitle}
-          setContent={setContent}
+          setBody={setBody}
           handleSubmit={handleSubmit}
         />
       </div>

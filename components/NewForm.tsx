@@ -1,19 +1,20 @@
 // Library imports
 import { FC, Dispatch, SetStateAction, FormEvent } from "react";
 
+// Props for new story form
 interface Props {
   title: string;
-  content: string;
+  body: string;
   setTitle: Dispatch<SetStateAction<string>>;
-  setContent: Dispatch<SetStateAction<string>>;
+  setBody: Dispatch<SetStateAction<string>>;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 const NewForm: FC<Props> = ({
   title,
-  content,
+  body,
   setTitle,
-  setContent,
+  setBody,
   handleSubmit,
 }) => {
   return (
@@ -28,19 +29,19 @@ const NewForm: FC<Props> = ({
         className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray3"
       />
       <textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
         rows={15}
         required
-        maxLength={2000}
-        placeholder="Your precious ideas here... (Max. 2000 Characters)"
+        maxLength={600}
+        placeholder="Your precious ideas here... (Max. 600 Characters)"
         className="border border-clr-gray4 bg-transparent px-2 py-1 text-sm font-light outline-none placeholder:text-clr-gray3"
       ></textarea>
       <button
         type="submit"
         className="mt-2 w-full bg-clr-black py-2 text-sm text-clr-gray1"
       >
-        Create
+        Post
       </button>
     </form>
   );

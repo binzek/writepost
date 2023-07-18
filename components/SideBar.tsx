@@ -47,14 +47,14 @@ const SideBar: FC<Props> = ({ isOpen }) => {
         </li>
         <li
           className={`${
-            pathname === "/blogs" && "bg-clr-black text-clr-gray1"
+            pathname === "/stories" && "bg-clr-black text-clr-gray1"
           }`}
         >
-          <Link href="/blogs" className="flex gap-1 px-10 py-4">
+          <Link href="/stories" className="flex gap-1 px-10 py-4">
             <FeedsIcon
-              color={pathname.includes("/blog") ? "#EFEFEF" : "#000"}
+              color={pathname.includes("/stories") ? "#EFEFEF" : "#000"}
             />
-            <span>Blogs</span>
+            <span>Stories</span>
           </Link>
         </li>
         <li
@@ -84,7 +84,7 @@ const SideBar: FC<Props> = ({ isOpen }) => {
         <li className="mt-5 self-center rounded-full bg-clr-black text-clr-gray1">
           <Link href="/new" className="flex gap-1 px-10 py-4">
             <AddIcon color="#EFEFEF" />
-            <span>New Post</span>
+            <span>New Story</span>
           </Link>
         </li>
       </ul>

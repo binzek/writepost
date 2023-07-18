@@ -25,8 +25,8 @@ const Home: FC = () => {
       <p
         className={`${poppins.className} mt-3 text-sm text-clr-gray4 md:mt-4 md:text-base xl:mt-5`}
       >
-        Explore a vast collection of articles, stories, and insights from
-        passionate writers around the world.
+        Explore a vast collection of short stories and insights from passionate
+        writers around the world.
       </p>
     </div>
   );

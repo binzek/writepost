@@ -24,12 +24,14 @@ const ProfilePage: FC = () => {
   // Get user's status
   const { user } = useContext(UserContext);
 
+  // State for storing user's details
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
   });
 
   if (user) {
+    // Get user's data on page mount and store it to state
     useEffect(() => {
       account
         .get()

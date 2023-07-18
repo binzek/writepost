@@ -20,8 +20,8 @@ const HomeButtons: FC = () => {
       >
         Start Writing
       </Link>
-      <Link href="/blogs" className="border-2 border-clr-black px-3 py-2">
-        Explore Blogs
+      <Link href="/stories" className="border-2 border-clr-black px-3 py-2">
+        Explore Stories
       </Link>
     </div>
   );
