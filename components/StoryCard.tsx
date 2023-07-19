@@ -15,7 +15,7 @@ interface Props {
 const StoryCard: FC<Props> = ({ title, publisher, body, date }) => {
   // Function to get the posted day
   const getPostedDay = (date: string) => {
-    return new Date(date).getDay() - new Date().getDay();
+    return new Date().getDay() - new Date(date).getDay();
   };
 
   return (

@@ -10,6 +10,7 @@ import StoryCard from "@/components/StoryCard";
 
 // Stories page props
 interface Stories {
+  id: string;
   title: string;
   publisher: string;
   body: string;
@@ -39,6 +40,7 @@ const StoriesPage: FC = () => {
           setStories((prevState) => [
             ...prevState,
             {
+              id: story.$id,
               title: story.title,
               publisher: story.publisher,
               body: story.body,
@@ -57,8 +59,9 @@ const StoriesPage: FC = () => {
         Explore Short Stories & Insights
       </h1>
       <div className="my-5 columns-1 gap-3 md:columns-2 lg:columns-3">
-        {stories.map((story) => (
+        {stories.reverse().map((story) => (
           <StoryCard
+            key={story.id}
             title={story.title}
             publisher={story.publisher}
             body={story.body}
