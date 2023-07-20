@@ -28,6 +28,7 @@ const SignInForm: FC<Props> = ({
           Email
         </label>
         <input
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
@@ -41,6 +42,7 @@ const SignInForm: FC<Props> = ({
           Password
         </label>
         <input
+          required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
