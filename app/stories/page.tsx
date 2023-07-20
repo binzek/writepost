@@ -55,23 +55,29 @@ const StoriesPage: FC = () => {
 
   return (
     <div
-      className={`${poppins.className} mx-auto -mt-8 w-11/12 overflow-y-scroll md:w-3/4 lg:w-2/3`}
+      className={`${poppins.className} mx-auto my-1 w-11/12 flex-1 md:w-3/4 lg:w-2/3`}
     >
       <h1 className={`${raleway.className} text-center text-2xl`}>
         Explore Short Stories & Insights
       </h1>
-      <div className="my-5 columns-1 gap-3 md:columns-2 lg:columns-3">
-        {stories.reverse().map((story) => (
-          <StoryCard
-            key={story.id}
-            title={story.title}
-            publisher={story.publisher}
-            uid={story.uid}
-            body={story.body}
-            date={story.date}
-          />
-        ))}
-      </div>
+      {stories.length < 1 ? (
+        <h2 className="mt-4 text-center text-lg">
+          No story has been created yet.
+        </h2>
+      ) : (
+        <div className="mt-2 columns-1 gap-3 md:columns-2 lg:columns-3">
+          {stories.reverse().map((story) => (
+            <StoryCard
+              key={story.id}
+              title={story.title}
+              publisher={story.publisher}
+              uid={story.uid}
+              body={story.body}
+              date={story.date}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -124,7 +124,7 @@ const ProfilePage: FC = () => {
               You haven't published anything yet.
             </h2>
           ) : (
-            <div className="mt-1 columns-1 gap-3 md:columns-2 lg:columns-3">
+            <div className="mt-2 columns-1 gap-3 md:columns-2 lg:columns-3">
               {stories.reverse().map((story) => (
                 <StoryCard
                   key={story.id}
