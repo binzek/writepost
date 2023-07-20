@@ -8,7 +8,9 @@ import { Raleway, Poppins } from "next/font/google";
 // Local imports
 import { UserContext } from "../layout";
 import { account } from "@/api/appwrite";
-import { UserProfile } from "@/assets/icons";
+import ProfileCard from "@/components/ProfileCard";
+import { databases } from "@/api/appwrite";
+import StoryCard from "@/components/StoryCard";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -20,6 +22,15 @@ const raleway = Raleway({
   weight: "700",
 });
 
+// Stories type
+interface Stories {
+  id: string;
+  title: string;
+  publisher: string;
+  body: string;
+  date: string;
+}
+
 const ProfilePage: FC = () => {
   // Get user's status
   const { user } = useContext(UserContext);
@@ -29,6 +40,19 @@ const ProfilePage: FC = () => {
     name: "",
     email: "",
   });
+  // State for all stories
+  const [stories, setStories] = useState<Array<Stories>>([]);
+
+  // Function to sign out current user
+  const signOut = () => {
+    confirm("Are you sure to sign out from WRITEPOST?") &&
+      account
+        .deleteSessions()
+        .then(() => {
+          window.location.href = "/";
+        })
+        .catch((error) => console.error(error));
+  };
 
   if (user) {
     // Get user's data on page mount and store it to state
@@ -41,33 +65,51 @@ const ProfilePage: FC = () => {
         .catch((error) => console.error(error));
     }, []);
 
+    // Fetch all stories on database on page mount
+    useEffect(() => {
+      databases
+        .listDocuments("writepost-db", "stories-collection")
+        .then((response) =>
+          response.documents.forEach((story) =>
+            setStories((prevState) => [
+              ...prevState,
+              {
+                id: story.$id,
+                title: story.title,
+                publisher: story.publisher,
+                body: story.body,
+                date: story.$createdAt,
+              },
+            ])
+          )
+        );
+    }, []);
+
     return (
       <div
-        className={`${poppins.className} mx-auto flex w-11/12 flex-col items-center gap-5 bg-clr-white py-6 md:w-1/2 lg:w-1/3`}
+        className={`${poppins.className} mx-auto -mt-8 w-11/12 md:w-3/4 lg:w-2/3`}
       >
-        <div className="-mt-20 rounded-full bg-clr-gray2 p-2">
-          <UserProfile dimension={96} color="#202020" strokeWidth={1.1} />
+        <ProfileCard
+          name={userDetails.name}
+          email={userDetails.email}
+          signOutFn={signOut}
+        />
+        <div>
+          <h1 className={`${raleway.className} text-center text-2xl`}>
+            Your Publishings
+          </h1>
+          <div className="my-5 columns-1 gap-3 md:columns-2 lg:columns-3">
+            {stories.reverse().map((story) => (
+              <StoryCard
+                key={story.id}
+                title={story.title}
+                publisher={story.publisher}
+                body={story.body}
+                date={story.date}
+              />
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col items-center">
-          <h2 className={`${raleway.className} text-xl`}>{userDetails.name}</h2>
-          <p className="text-sm font-thin text-clr-gray3">
-            {userDetails.email}
-          </p>
-        </div>
-        <button
-          onClick={() =>
-            confirm("Are you sure to sign out from WRITEPOST?") &&
-            account
-              .deleteSessions()
-              .then(() => {
-                window.location.href = "/";
-              })
-              .catch((error) => console.error(error))
-          }
-          className="border-2 border-clr-gray4 bg-clr-gray2 px-6 py-1 text-sm font-medium"
-        >
-          Sign Out
-        </button>
       </div>
     );
   } else {

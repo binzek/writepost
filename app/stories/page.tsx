@@ -8,7 +8,7 @@ import { Poppins, Raleway } from "next/font/google";
 import { databases } from "@/api/appwrite";
 import StoryCard from "@/components/StoryCard";
 
-// Stories page props
+// Stories type
 interface Stories {
   id: string;
   title: string;
