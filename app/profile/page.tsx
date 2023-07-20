@@ -55,6 +55,25 @@ const ProfilePage: FC = () => {
         .catch((error) => console.error(error));
   };
 
+  // Function to delete a story
+  const deleteStory = (storyId: string, userId: string) => {
+    account
+      .get()
+      .then((user) => {
+        if (user.$id === userId) {
+          confirm("Are you sure to delete this story?") &&
+            databases
+              .deleteDocument("writepost-db", "stories-collection", storyId)
+              .then(() => {
+                alert("Story deleted succesfully");
+                window.location.reload();
+              })
+              .catch((error) => console.error(error));
+        }
+      })
+      .catch((error) => console.error(error));
+  };
+
   if (user) {
     // Get user's data on page mount and store it to state
     useEffect(() => {
@@ -109,6 +128,7 @@ const ProfilePage: FC = () => {
                 uid={story.uid}
                 body={story.body}
                 date={story.date}
+                deleteFn={() => deleteStory(story.id, story.uid)}
               />
             ))}
           </div>

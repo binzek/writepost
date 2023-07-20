@@ -11,9 +11,17 @@ interface Props {
   uid: string;
   body: string;
   date: string;
+  deleteFn?: () => void;
 }
 
-const StoryCard: FC<Props> = ({ title, publisher, body, date, uid }) => {
+const StoryCard: FC<Props> = ({
+  title,
+  publisher,
+  body,
+  date,
+  uid,
+  deleteFn,
+}) => {
   // Function to get the posted day
   const getPostedDay = (date: string) => {
     return new Date().getDay() - new Date(date).getDay();
@@ -35,6 +43,14 @@ const StoryCard: FC<Props> = ({ title, publisher, body, date, uid }) => {
           : `Published ${getPostedDay(date)} Days Ago`}
       </p>
       <p>{body}</p>
+      {deleteFn && (
+        <button
+          onClick={deleteFn}
+          className="self-end text-sm font-light text-clr-gray3 underline underline-offset-2"
+        >
+          Delete
+        </button>
+      )}
     </div>
   );
 };
