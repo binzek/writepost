@@ -13,6 +13,7 @@ interface Stories {
   id: string;
   title: string;
   publisher: string;
+  uid: string;
   body: string;
   date: string;
 }
@@ -43,6 +44,7 @@ const StoriesPage: FC = () => {
               id: story.$id,
               title: story.title,
               publisher: story.publisher,
+              uid: story.uid,
               body: story.body,
               date: story.$createdAt,
             },
@@ -64,6 +66,7 @@ const StoriesPage: FC = () => {
             key={story.id}
             title={story.title}
             publisher={story.publisher}
+            uid={story.uid}
             body={story.body}
             date={story.date}
           />

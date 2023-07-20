@@ -8,11 +8,12 @@ import { UserProfile } from "@/assets/icons";
 interface Props {
   title: string;
   publisher: string;
+  uid: string;
   body: string;
   date: string;
 }
 
-const StoryCard: FC<Props> = ({ title, publisher, body, date }) => {
+const StoryCard: FC<Props> = ({ title, publisher, body, date, uid }) => {
   // Function to get the posted day
   const getPostedDay = (date: string) => {
     return new Date().getDay() - new Date(date).getDay();

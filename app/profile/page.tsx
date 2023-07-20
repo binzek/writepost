@@ -28,6 +28,7 @@ interface Stories {
   title: string;
   publisher: string;
   body: string;
+  uid: string;
   date: string;
 }
 
@@ -59,30 +60,31 @@ const ProfilePage: FC = () => {
     useEffect(() => {
       account
         .get()
-        .then((response) =>
-          setUserDetails({ name: response.name, email: response.email })
-        )
-        .catch((error) => console.error(error));
-    }, []);
+        .then((user) => {
+          setUserDetails({ name: user.name, email: user.email });
 
-    // Fetch all stories on database on page mount
-    useEffect(() => {
-      databases
-        .listDocuments("writepost-db", "stories-collection")
-        .then((response) =>
-          response.documents.forEach((story) =>
-            setStories((prevState) => [
-              ...prevState,
-              {
-                id: story.$id,
-                title: story.title,
-                publisher: story.publisher,
-                body: story.body,
-                date: story.$createdAt,
-              },
-            ])
-          )
-        );
+          // Get all documents that it's uid matched with current user
+          databases
+            .listDocuments("writepost-db", "stories-collection")
+            .then((response) =>
+              response.documents.forEach((story) => {
+                if (story.uid === user.$id) {
+                  setStories((prevState) => [
+                    ...prevState,
+                    {
+                      id: story.$id,
+                      title: story.title,
+                      publisher: story.publisher,
+                      uid: story.uid,
+                      body: story.body,
+                      date: story.$createdAt,
+                    },
+                  ]);
+                }
+              })
+            );
+        })
+        .catch((error) => console.error(error));
     }, []);
 
     return (
@@ -104,6 +106,7 @@ const ProfilePage: FC = () => {
                 key={story.id}
                 title={story.title}
                 publisher={story.publisher}
+                uid={story.uid}
                 body={story.body}
                 date={story.date}
               />

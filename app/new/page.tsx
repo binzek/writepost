@@ -44,6 +44,7 @@ const NewPage: FC = () => {
               publisher: user.name,
               title,
               body,
+              uid: user.$id,
             }
           );
         })
