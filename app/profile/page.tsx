@@ -108,30 +108,36 @@ const ProfilePage: FC = () => {
 
     return (
       <div
-        className={`${poppins.className} mx-auto -mt-8 w-11/12 md:w-3/4 lg:w-2/3`}
+        className={`${poppins.className} mx-auto my-1 w-11/12 flex-1 md:w-3/4 lg:w-2/3`}
       >
         <ProfileCard
           name={userDetails.name}
           email={userDetails.email}
           signOutFn={signOut}
         />
-        <div>
+        <div className="mt-3 md:mt-4">
           <h1 className={`${raleway.className} text-center text-2xl`}>
             Your Publishings
           </h1>
-          <div className="my-5 columns-1 gap-3 md:columns-2 lg:columns-3">
-            {stories.reverse().map((story) => (
-              <StoryCard
-                key={story.id}
-                title={story.title}
-                publisher={story.publisher}
-                uid={story.uid}
-                body={story.body}
-                date={story.date}
-                deleteFn={() => deleteStory(story.id, story.uid)}
-              />
-            ))}
-          </div>
+          {stories.length < 1 ? (
+            <h2 className="mt-4 text-center text-lg">
+              You haven't published anything yet.
+            </h2>
+          ) : (
+            <div className="mt-1 columns-1 gap-3 md:columns-2 lg:columns-3">
+              {stories.reverse().map((story) => (
+                <StoryCard
+                  key={story.id}
+                  title={story.title}
+                  publisher={story.publisher}
+                  uid={story.uid}
+                  body={story.body}
+                  date={story.date}
+                  deleteFn={() => deleteStory(story.id, story.uid)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );

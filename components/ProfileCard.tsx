@@ -13,20 +13,18 @@ interface Props {
 
 const ProfileCard: FC<Props> = ({ name, email, signOutFn }) => {
   return (
-    <div className="flex w-full items-center justify-between">
-      <div className="flex items-center gap-1">
-        <UserProfile dimension={40} strokeWidth={0.5} />
-        <div>
-          <h2 className="font-medium">{name}</h2>
-          <p className="text-sm font-light">{email}</p>
-        </div>
+    <div className="flex gap-2 bg-clr-gray2 p-3">
+      <UserProfile dimension={40} strokeWidth={0.5} />
+      <div className="flex flex-1 flex-col items-start">
+        <h2 className="font-medium">{name}</h2>
+        <p className="text-sm font-light">{email}</p>
+        <button
+          onClick={signOutFn}
+          className="mt-1 text-sm font-medium text-clr-gray3 underline underline-offset-2"
+        >
+          Sign Out
+        </button>
       </div>
-      <button
-        onClick={signOutFn}
-        className="text-sm font-medium text-clr-gray3 underline underline-offset-2"
-      >
-        Sign Out
-      </button>
     </div>
   );
 };
