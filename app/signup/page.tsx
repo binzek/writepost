@@ -44,7 +44,7 @@ const SignUpPage: FC = () => {
           setName("");
           window.location.href = "/";
         })
-        .catch((error) => console.error(error));
+        .catch((error) => alert(error.message));
     };
 
     // Function to handle form submit

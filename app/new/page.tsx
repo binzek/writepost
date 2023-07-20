@@ -53,7 +53,7 @@ const NewPage: FC = () => {
           setTitle("");
           setBody("");
         })
-        .catch((error) => console.error(error));
+        .catch((error) => alert(error.message));
   };
 
   // Function to handle new story form submission

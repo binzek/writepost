@@ -52,7 +52,7 @@ const ProfilePage: FC = () => {
         .then(() => {
           window.location.href = "/";
         })
-        .catch((error) => console.error(error));
+        .catch((error) => alert(error.message));
   };
 
   // Function to delete a story
@@ -68,7 +68,7 @@ const ProfilePage: FC = () => {
                 alert("Story deleted succesfully");
                 window.location.reload();
               })
-              .catch((error) => console.error(error));
+              .catch((error) => alert(error.message));
         }
       })
       .catch((error) => alert(error.message));
@@ -101,7 +101,8 @@ const ProfilePage: FC = () => {
                   ]);
                 }
               })
-            );
+            )
+            .catch((error) => alert(error.message));
         })
         .catch((error) => console.error(error));
     }, []);
