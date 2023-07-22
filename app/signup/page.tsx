@@ -39,7 +39,14 @@ const SignUpPage: FC = () => {
           setEmail("");
           setPassword("");
           setName("");
-          window.location.href = "/";
+          account
+            .createEmailSession(email, password)
+            .then(() => {
+              setEmail("");
+              setPassword("");
+              window.location.href = "/profile";
+            })
+            .catch((error) => alert(error.message));
         })
         .catch((error) => alert(error.message));
     };
