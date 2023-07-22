@@ -2,6 +2,7 @@
 
 // Library imports
 import { FC, ReactNode, createContext, useState, useEffect } from "react";
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 // Local imports
 import "./globals.css";
@@ -41,6 +42,12 @@ const AppLayout: FC<Props> = ({ children }) => {
         <AuthContext.Provider value={isUser}>
           <NavBar />
           {children}
+          <ProgressBar
+            height="4px"
+            color="#000"
+            options={{ showSpinner: false }}
+            shallowRouting
+          />
           <Footer />
         </AuthContext.Provider>
       </body>
