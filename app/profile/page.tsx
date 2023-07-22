@@ -10,7 +10,7 @@ import { account } from "@/api/appwrite";
 import ProfileCard from "@/components/ProfileCard";
 import { databases } from "@/api/appwrite";
 import StoryCard from "@/components/StoryCard";
-import { AuthContext } from "../layout";
+import { AuthContext } from "@/context/AuthContext";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -33,6 +33,7 @@ interface Stories {
 }
 
 const ProfilePage: FC = () => {
+  // Get user's status
   const isUser = useContext(AuthContext);
 
   if (isUser) {

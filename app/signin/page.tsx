@@ -1,7 +1,7 @@
 "use client";
 
 // Library imports
-import { FC, FormEvent, useContext, useEffect, useState } from "react";
+import { FC, FormEvent, useContext, useState } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Poppins, Raleway } from "next/font/google";
@@ -9,7 +9,7 @@ import { Poppins, Raleway } from "next/font/google";
 // Local imports
 import SignInForm from "@/components/SignInForm";
 import { account } from "@/api/appwrite";
-import { AuthContext } from "../layout";
+import { AuthContext } from "@/context/AuthContext";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -22,6 +22,7 @@ const raleway = Raleway({
 });
 
 const SignInPage: FC = () => {
+  // Get user's status
   const isUser = useContext(AuthContext);
 
   if (!isUser) {
