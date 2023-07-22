@@ -52,7 +52,7 @@ const SignUpPage: FC = () => {
 
     return (
       <div
-        className={`${poppins.className} mx-auto -mt-8 flex w-4/5 flex-col items-center md:w-1/2 lg:w-1/3 xl:w-1/4`}
+        className={`${poppins.className} mx-auto -mt-8 flex w-4/5 flex-1 flex-col items-center justify-center md:w-1/2 lg:w-1/3 xl:w-1/4`}
       >
         <h1 className={`${raleway.className} text-center text-2xl`}>
           Hey There, Welcome!

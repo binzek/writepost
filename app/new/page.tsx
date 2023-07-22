@@ -64,7 +64,7 @@ const NewPage: FC = () => {
 
     return (
       <div
-        className={`${poppins.className} mx-auto -mt-8 flex w-5/6 flex-col items-center md:w-2/3 lg:w-1/2`}
+        className={`${poppins.className} mx-auto -mt-8 flex w-5/6 flex-1 flex-col items-center justify-center md:w-2/3 lg:w-1/2`}
       >
         <h1 className={`${raleway.className} text-center text-2xl`}>
           Write a New Short Story / Insight

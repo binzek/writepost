@@ -38,7 +38,7 @@ const AppLayout: FC<Props> = ({ children }) => {
 
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col justify-between bg-clr-gray1 text-clr-black selection:bg-clr-gray3 selection:text-clr-gray1">
+      <body className="flex min-h-[100svh] flex-col justify-between bg-clr-gray1 text-clr-black selection:bg-clr-gray3 selection:text-clr-gray1">
         <AuthContext.Provider value={isUser}>
           <NavBar />
           {children}
