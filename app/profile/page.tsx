@@ -6,11 +6,11 @@ import { redirect } from "next/navigation";
 import { Raleway, Poppins } from "next/font/google";
 
 // Local imports
-import { UserContext } from "../layout";
 import { account } from "@/api/appwrite";
 import ProfileCard from "@/components/ProfileCard";
 import { databases } from "@/api/appwrite";
 import StoryCard from "@/components/StoryCard";
+import { AuthContext } from "../layout";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -33,48 +33,47 @@ interface Stories {
 }
 
 const ProfilePage: FC = () => {
-  // Get user's status
-  const { user } = useContext(UserContext);
+  const isUser = useContext(AuthContext);
 
-  // State for storing user's details
-  const [userDetails, setUserDetails] = useState({
-    name: "",
-    email: "",
-  });
-  // State for all stories
-  const [stories, setStories] = useState<Array<Stories>>([]);
+  if (isUser) {
+    // State for storing user's details
+    const [userDetails, setUserDetails] = useState({
+      name: "",
+      email: "",
+    });
+    // State for all stories
+    const [stories, setStories] = useState<Array<Stories>>([]);
 
-  // Function to sign out current user
-  const signOut = () => {
-    confirm("Are you sure to sign out from WRITEPOST?") &&
+    // Function to sign out current user
+    const signOut = () => {
+      confirm("Are you sure to sign out from WRITEPOST?") &&
+        account
+          .deleteSessions()
+          .then(() => {
+            window.location.href = "/";
+          })
+          .catch((error) => alert(error.message));
+    };
+
+    // Function to delete a story
+    const deleteStory = (storyId: string, userId: string) => {
       account
-        .deleteSessions()
-        .then(() => {
-          window.location.href = "/";
+        .get()
+        .then((user) => {
+          if (user.$id === userId) {
+            confirm("Are you sure to delete this story?") &&
+              databases
+                .deleteDocument("writepost-db", "stories-collection", storyId)
+                .then(() => {
+                  alert("Story deleted succesfully");
+                  window.location.reload();
+                })
+                .catch((error) => alert(error.message));
+          }
         })
         .catch((error) => alert(error.message));
-  };
+    };
 
-  // Function to delete a story
-  const deleteStory = (storyId: string, userId: string) => {
-    account
-      .get()
-      .then((user) => {
-        if (user.$id === userId) {
-          confirm("Are you sure to delete this story?") &&
-            databases
-              .deleteDocument("writepost-db", "stories-collection", storyId)
-              .then(() => {
-                alert("Story deleted succesfully");
-                window.location.reload();
-              })
-              .catch((error) => alert(error.message));
-        }
-      })
-      .catch((error) => alert(error.message));
-  };
-
-  if (user) {
     // Get user's data on page mount and store it to state
     useEffect(() => {
       account

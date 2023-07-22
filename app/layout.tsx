@@ -21,31 +21,28 @@ export const metadata = {
     "Explore a vast collection of short stories and insights from passionate writers around the world.",
 };
 
-// Create context
-export const UserContext = createContext({ user: false });
+// Context to define user's status
+export const AuthContext = createContext(false);
 
 const AppLayout: FC<Props> = ({ children }) => {
-  // State to pass user's status
+  // State for user's status
   const [isUser, setIsUser] = useState(false);
 
-  // Get user's status on app mount
-  useEffect(() => {
+  window.onload = () => {
     account
       .get()
-      .then((response) => {
-        response ? setIsUser(true) : setIsUser(false);
-      })
+      .then(() => setIsUser(true))
       .catch((error) => console.error(error));
-  }, []);
+  };
 
   return (
     <html lang="en">
       <body className="flex min-h-screen flex-col justify-between bg-clr-gray1 text-clr-black selection:bg-clr-gray3 selection:text-clr-gray1">
-        <UserContext.Provider value={{ user: isUser }}>
+        <AuthContext.Provider value={isUser}>
           <NavBar />
           {children}
           <Footer />
-        </UserContext.Provider>
+        </AuthContext.Provider>
       </body>
     </html>
   );
