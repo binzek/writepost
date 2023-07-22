@@ -22,7 +22,7 @@ const Footer: FC = () => {
       <div
         className={`${poppins.className} mt-1 flex justify-between px-2 text-sm`}
       >
-        <p>&copy; WRITEPOST {currentYear}</p>
+        <p>&copy; {currentYear} ABDUL WAJID</p>
         <div className="flex items-center gap-3">
           <Link href="https://buymeacoffee.com/wajidnv/" target="_blank">
             <HeartIcon dimension={22} strokeWidth={1.5} color="#F33A6A" />
