@@ -36,8 +36,14 @@ const ResetPasswordPage: FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    // State for button contents
+    const [sendButtonContent, setSendButtonContent] = useState("Send Link");
+    const [changeButtonContent, setChangeButtonContent] =
+      useState("Change Password");
+
     // Function to reset password
     const resetPassword = () => {
+      setSendButtonContent("Sending...");
       account
         .createRecovery(email, "http://localhost:3000/reset-password")
         .then(() => {
@@ -45,11 +51,13 @@ const ResetPasswordPage: FC = () => {
           alert("A password reset link has been sent to your inbox");
           router.push("/signin");
         })
-        .catch((error) => alert(error.message));
+        .catch((error) => alert(error.message))
+        .finally(() => setSendButtonContent("Send Link"));
     };
 
     // Function to change password
     const changePassword = () => {
+      setChangeButtonContent("Changing...");
       account
         .updateRecovery(
           searchParams.get("userId") || "",
@@ -64,7 +72,8 @@ const ResetPasswordPage: FC = () => {
           );
           window.close();
         })
-        .catch((error) => alert(error.message));
+        .catch((error) => alert(error.message))
+        .finally(() => setChangeButtonContent("Change Password"));
     };
 
     // Function to handle form submit
@@ -104,12 +113,14 @@ const ResetPasswordPage: FC = () => {
             handleSubmit={handleChangePassword}
             password={password}
             setPassword={setPassword}
+            buttonContent={changeButtonContent}
           />
         ) : (
           <ResetPasswordForm
             email={email}
             setEmail={setEmail}
             handleSubmit={handleReset}
+            buttonContent={sendButtonContent}
           />
         )}
       </div>

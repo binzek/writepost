@@ -6,9 +6,15 @@ interface Props {
   email: string;
   setEmail: Dispatch<SetStateAction<string>>;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  buttonContent: string;
 }
 
-const ResetPasswordForm: FC<Props> = ({ email, setEmail, handleSubmit }) => {
+const ResetPasswordForm: FC<Props> = ({
+  email,
+  setEmail,
+  handleSubmit,
+  buttonContent,
+}) => {
   return (
     <form
       action="#"
@@ -33,7 +39,7 @@ const ResetPasswordForm: FC<Props> = ({ email, setEmail, handleSubmit }) => {
         type="submit"
         className="mt-2 w-full bg-clr-black py-2 text-sm text-clr-gray1"
       >
-        Send Link
+        {buttonContent}
       </button>
     </form>
   );

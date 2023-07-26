@@ -10,6 +10,7 @@ interface Props {
   setPassword: Dispatch<SetStateAction<string>>;
   setName: Dispatch<SetStateAction<string>>;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  buttonContent: string;
 }
 
 const SignUpForm: FC<Props> = ({
@@ -20,6 +21,7 @@ const SignUpForm: FC<Props> = ({
   setPassword,
   setName,
   handleSubmit,
+  buttonContent,
 }) => {
   return (
     <form className="my-5 flex w-full flex-col gap-3" onSubmit={handleSubmit}>
@@ -67,7 +69,7 @@ const SignUpForm: FC<Props> = ({
         type="submit"
         className="mt-2 w-full bg-clr-black py-2 text-sm text-clr-gray1"
       >
-        Create Account
+        {buttonContent}
       </button>
     </form>
   );

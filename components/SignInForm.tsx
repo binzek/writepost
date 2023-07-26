@@ -1,5 +1,5 @@
 // Library imports
-import { FC, Dispatch, SetStateAction, FormEvent } from "react";
+import { FC, Dispatch, SetStateAction, FormEvent, ReactNode } from "react";
 import Link from "next/link";
 
 // Sign up form props
@@ -9,6 +9,7 @@ interface Props {
   setEmail: Dispatch<SetStateAction<string>>;
   setPassword: Dispatch<SetStateAction<string>>;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  buttonContent: string;
 }
 
 const SignInForm: FC<Props> = ({
@@ -17,6 +18,7 @@ const SignInForm: FC<Props> = ({
   setEmail,
   setPassword,
   handleSubmit,
+  buttonContent,
 }) => {
   return (
     <form
@@ -62,7 +64,7 @@ const SignInForm: FC<Props> = ({
         type="submit"
         className="mt-2 w-full bg-clr-black py-2 text-sm text-clr-gray1"
       >
-        Sign in
+        {buttonContent}
       </button>
     </form>
   );

@@ -8,6 +8,7 @@ interface Props {
   setTitle: Dispatch<SetStateAction<string>>;
   setBody: Dispatch<SetStateAction<string>>;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  buttonContent: string;
 }
 
 const NewForm: FC<Props> = ({
@@ -16,6 +17,7 @@ const NewForm: FC<Props> = ({
   setTitle,
   setBody,
   handleSubmit,
+  buttonContent,
 }) => {
   return (
     <form className="my-5 flex w-full flex-col gap-3" onSubmit={handleSubmit}>
@@ -41,7 +43,7 @@ const NewForm: FC<Props> = ({
         type="submit"
         className="mt-2 w-full bg-clr-black py-2 text-sm text-clr-gray1"
       >
-        Post
+        {buttonContent}
       </button>
     </form>
   );

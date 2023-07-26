@@ -26,6 +26,9 @@ const SignUpPage: FC = () => {
   // Get user's status
   const isUser = useContext(AuthContext);
 
+  // State for sign up button content
+  const [buttonContent, setButtonContent] = useState("Create Account");
+
   if (!isUser) {
     // States for email, password and name inputs
     const [email, setEmail] = useState("");
@@ -34,6 +37,7 @@ const SignUpPage: FC = () => {
 
     // Function to create new user in appwrite server
     const createAccount = () => {
+      setButtonContent("Creating...");
       account
         .create(ID.unique(), email, password, name)
         .then(() => {
@@ -49,7 +53,8 @@ const SignUpPage: FC = () => {
             })
             .catch((error) => alert(error.message));
         })
-        .catch((error) => alert(error.message));
+        .catch((error) => alert(error.message))
+        .finally(() => setButtonContent("Create Account"));
     };
 
     // Function to handle form submit
@@ -76,6 +81,7 @@ const SignUpPage: FC = () => {
           setPassword={setPassword}
           setName={setName}
           handleSubmit={handleSignUp}
+          buttonContent={buttonContent}
         />
         <p className="text-sm font-light">
           Already have an account?{" "}

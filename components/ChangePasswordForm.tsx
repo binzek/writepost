@@ -6,12 +6,14 @@ interface Props {
   password: string;
   setPassword: Dispatch<SetStateAction<string>>;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  buttonContent: string;
 }
 
 const ChangePasswordForm: FC<Props> = ({
   password,
   setPassword,
   handleSubmit,
+  buttonContent,
 }) => {
   return (
     <form
@@ -37,7 +39,7 @@ const ChangePasswordForm: FC<Props> = ({
         type="submit"
         className="mt-2 w-full bg-clr-black py-2 text-sm text-clr-gray1"
       >
-        Change Password
+        {buttonContent}
       </button>
     </form>
   );

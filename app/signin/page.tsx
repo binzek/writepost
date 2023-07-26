@@ -10,6 +10,7 @@ import { Poppins, Raleway } from "next/font/google";
 import SignInForm from "@/components/SignInForm";
 import { account } from "@/api/appwrite";
 import { AuthContext } from "@/context/AuthContext";
+import { WritePostIcon } from "@/assets/icons";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -30,8 +31,12 @@ const SignInPage: FC = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    // State for sign in button content
+    const [buttonContent, setButtonContent] = useState("Sign In");
+
     // Function to create an email session
     const createEmailSession = () => {
+      setButtonContent("Signing In...");
       account
         .createEmailSession(email, password)
         .then(() => {
@@ -39,7 +44,8 @@ const SignInPage: FC = () => {
           setPassword("");
           window.location.href = "/";
         })
-        .catch((error) => alert(error.message));
+        .catch((error) => alert(error.message))
+        .finally(() => setButtonContent("Sign In"));
     };
 
     // Function to handle form submit
@@ -64,6 +70,7 @@ const SignInPage: FC = () => {
           setEmail={setEmail}
           setPassword={setPassword}
           handleSubmit={handleSignIn}
+          buttonContent={buttonContent}
         />
         <p className="text-sm font-light">
           Don't have an account?{" "}

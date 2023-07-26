@@ -25,6 +25,9 @@ const NewPage: FC = () => {
   // Get user's status
   const isUser = useContext(AuthContext);
 
+  // State for sign up button content
+  const [buttonContent, setButtonContent] = useState("Post");
+
   if (isUser) {
     // State for story title
     const [title, setTitle] = useState("");
@@ -34,27 +37,29 @@ const NewPage: FC = () => {
     // Function to create new story into database
     const postNewStory = () => {
       confirm("Are you sure to post the story?") &&
-        account
-          .get()
-          .then((user) => {
-            databases.createDocument(
-              "writepost-db",
-              "stories-collection",
-              ID.unique(),
-              {
-                publisher: user.name,
-                title,
-                body,
-                uid: user.$id,
-              }
-            );
-          })
-          .then(() => {
-            alert("Your story has been posted!");
-            setTitle("");
-            setBody("");
-          })
-          .catch((error) => alert(error.message));
+        setButtonContent("Posting...");
+      account
+        .get()
+        .then((user) => {
+          databases.createDocument(
+            "writepost-db",
+            "stories-collection",
+            ID.unique(),
+            {
+              publisher: user.name,
+              title,
+              body,
+              uid: user.$id,
+            }
+          );
+        })
+        .then(() => {
+          alert("Your story has been posted!");
+          setTitle("");
+          setBody("");
+        })
+        .catch((error) => alert(error.message))
+        .finally(() => setButtonContent("Post"));
     };
 
     // Function to handle new story form submission
@@ -76,6 +81,7 @@ const NewPage: FC = () => {
           setTitle={setTitle}
           setBody={setBody}
           handleSubmit={handleSubmit}
+          buttonContent={buttonContent}
         />
       </div>
     );
