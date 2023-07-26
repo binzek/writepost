@@ -512,3 +512,39 @@ export const UserProfile = ({ dimension, color, strokeWidth }: IconProps) => {
     </svg>
   );
 };
+
+export const WritePostIcon = ({ dimension }: IconProps) => {
+  return (
+    <svg
+      width={dimension || "24"}
+      height={dimension || "24"}
+      viewBox="0 0 67 66"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask id="path-1-inside-1_3_14" fill="white">
+        <path d="M0.84613 0H66.8461V66H0.84613V0Z" />
+      </mask>
+      <path
+        d="M66.8461 0H68.8461V-2H66.8461V0ZM66.8461 66V68H68.8461V66H66.8461ZM0.84613 2H66.8461V-2H0.84613V2ZM64.8461 0V66H68.8461V0H64.8461ZM66.8461 64H0.84613V68H66.8461V64Z"
+        fill="#525252"
+        mask="url(#path-1-inside-1_3_14)"
+      />
+      <line
+        x1="1.84613"
+        x2="1.84613"
+        y2="17.8491"
+        stroke="#525252"
+        strokeWidth="2"
+      />
+      <line
+        x1="1.84613"
+        y1="48.1509"
+        x2="1.84613"
+        y2="66"
+        stroke="#525252"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+};
