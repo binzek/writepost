@@ -50,7 +50,8 @@ const StoriesPage: FC = () => {
             },
           ])
         )
-      );
+      )
+      .catch((error) => alert(error.message));
   }, []);
 
   return (
