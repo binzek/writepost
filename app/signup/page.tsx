@@ -1,7 +1,7 @@
 "use client";
 
 // Library imports
-import { FC, useState, FormEvent, useContext } from "react";
+import { FC, useState, FormEvent, useContext, useEffect } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Poppins, Raleway } from "next/font/google";
@@ -62,6 +62,10 @@ const SignUpPage: FC = () => {
       e.preventDefault();
       createAccount();
     };
+
+    useEffect(() => {
+      document.title = "Sign Up • WRITEPOST";
+    }, []);
 
     return (
       <div

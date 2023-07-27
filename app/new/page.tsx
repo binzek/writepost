@@ -1,7 +1,7 @@
 "use client";
 
 // Library imports
-import { FC, FormEvent, useContext, useState } from "react";
+import { FC, FormEvent, useContext, useState, useEffect } from "react";
 import { redirect } from "next/navigation";
 import { ID } from "appwrite";
 import { Poppins, Raleway } from "next/font/google";
@@ -67,6 +67,10 @@ const NewPage: FC = () => {
       e.preventDefault();
       postNewStory();
     };
+
+    useEffect(() => {
+      document.title = "New Story • WRITEPOST";
+    }, []);
 
     return (
       <div

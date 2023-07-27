@@ -14,7 +14,7 @@ interface Props {
 
 // Meta informations of the entire app
 export const metadata = {
-  title: "WRITEPOST",
+  title: "WRITEPOST • Wave Your Imaginations",
   description:
     "Explore a vast collection of short stories and insights from passionate writers around the world.",
 };

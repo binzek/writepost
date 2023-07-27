@@ -54,6 +54,10 @@ const StoriesPage: FC = () => {
       .catch((error) => alert(error.message));
   }, []);
 
+  useEffect(() => {
+    document.title = "Stories • WRITEPOST";
+  }, []);
+
   return (
     <div
       className={`${poppins.className} mx-auto my-1 w-11/12 flex-1 md:w-3/4 lg:w-2/3`}

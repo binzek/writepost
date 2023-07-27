@@ -107,6 +107,10 @@ const ProfilePage: FC = () => {
         .catch((error) => console.error(error));
     }, []);
 
+    useEffect(() => {
+      document.title = userDetails.name + " • WRITEPOST";
+    }, [userDetails.name]);
+
     return (
       <div
         className={`${poppins.className} mx-auto my-1 w-11/12 flex-1 md:w-3/4 lg:w-2/3`}

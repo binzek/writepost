@@ -1,7 +1,7 @@
 "use client";
 
 // Library imports
-import { FC, FormEvent, useContext, useState } from "react";
+import { FC, FormEvent, useContext, useState, useEffect } from "react";
 import { redirect, useSearchParams, useRouter } from "next/navigation";
 import { Poppins, Raleway } from "next/font/google";
 
@@ -87,6 +87,10 @@ const ResetPasswordPage: FC = () => {
       e.preventDefault();
       changePassword();
     };
+
+    useEffect(() => {
+      document.title = "Reset Password • WRITEPOST";
+    }, []);
 
     return (
       <div

@@ -1,7 +1,7 @@
 "use client";
 
 // Library imports
-import { FC, FormEvent, useContext, useState } from "react";
+import { FC, FormEvent, useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Poppins, Raleway } from "next/font/google";
@@ -10,7 +10,6 @@ import { Poppins, Raleway } from "next/font/google";
 import SignInForm from "@/components/SignInForm";
 import { account } from "@/api/appwrite";
 import { AuthContext } from "@/context/AuthContext";
-import { WritePostIcon } from "@/assets/icons";
 
 // Fonts initialization
 const poppins = Poppins({
@@ -53,6 +52,10 @@ const SignInPage: FC = () => {
       e.preventDefault();
       createEmailSession();
     };
+
+    useEffect(() => {
+      document.title = "Sign In • WRITEPOST";
+    }, []);
 
     return (
       <div
