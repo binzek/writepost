@@ -147,7 +147,7 @@ const ProfilePage: FC = () => {
       </div>
     );
   } else {
-    redirect("/signin");
+    redirect("/signin?redirect=profile");
   }
 };
 

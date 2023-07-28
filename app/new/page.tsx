@@ -90,7 +90,7 @@ const NewPage: FC = () => {
       </div>
     );
   } else {
-    redirect("/signin");
+    redirect("/signin?redirect=new");
   }
 };
 

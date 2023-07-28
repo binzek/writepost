@@ -3,7 +3,7 @@
 // Library imports
 import { FC, useState, FormEvent, useContext, useEffect } from "react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { Poppins, Raleway } from "next/font/google";
 import { ID } from "appwrite";
 
@@ -25,6 +25,9 @@ const raleway = Raleway({
 const SignUpPage: FC = () => {
   // Get user's status
   const isUser = useContext(AuthContext);
+
+  // Params search initialization
+  const searchParams = useSearchParams();
 
   // State for sign up button content
   const [buttonContent, setButtonContent] = useState("Create Account");
@@ -49,7 +52,11 @@ const SignUpPage: FC = () => {
             .then(() => {
               setEmail("");
               setPassword("");
-              window.location.href = "/profile";
+              window.location.href = `/${
+                searchParams.get("redirect")
+                  ? searchParams.get("redirect")
+                  : "profile"
+              }`;
             })
             .catch((error) => alert(error.message));
         })
@@ -89,14 +96,21 @@ const SignUpPage: FC = () => {
         />
         <p className="text-sm font-light">
           Already have an account?{" "}
-          <Link href="/signin" className="font-medium">
+          <Link
+            href={`/signin?redirect=${searchParams.get("redirect")}`}
+            className="font-medium"
+          >
             Sign in
           </Link>
         </p>
       </div>
     );
   } else {
-    redirect("/profile");
+    redirect(
+      `/${
+        searchParams.get("redirect") ? searchParams.get("redirect") : "profile"
+      }`
+    );
   }
 };
 

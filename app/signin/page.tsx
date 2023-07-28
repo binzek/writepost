@@ -3,7 +3,7 @@
 // Library imports
 import { FC, FormEvent, useContext, useState, useEffect } from "react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { Poppins, Raleway } from "next/font/google";
 
 // Local imports
@@ -25,6 +25,9 @@ const SignInPage: FC = () => {
   // Get user's status
   const isUser = useContext(AuthContext);
 
+  // Params search initialization
+  const searchParams = useSearchParams();
+
   if (!isUser) {
     // States for email and password inputs
     const [email, setEmail] = useState("");
@@ -41,7 +44,11 @@ const SignInPage: FC = () => {
         .then(() => {
           setEmail("");
           setPassword("");
-          window.location.href = "/";
+          window.location.href = `/${
+            searchParams.get("redirect")
+              ? searchParams.get("redirect")
+              : "profile"
+          }`;
         })
         .catch((error) => alert(error.message))
         .finally(() => setButtonContent("Sign In"));
@@ -77,14 +84,21 @@ const SignInPage: FC = () => {
         />
         <p className="text-sm font-light">
           Don't have an account?{" "}
-          <Link href="/signup" className="font-medium">
+          <Link
+            href={`/signup?redirect=${searchParams.get("redirect")}`}
+            className="font-medium"
+          >
             Sign up
           </Link>
         </p>
       </div>
     );
   } else {
-    redirect("/profile");
+    redirect(
+      `/${
+        searchParams.get("redirect") ? searchParams.get("redirect") : "profile"
+      }`
+    );
   }
 };
 
