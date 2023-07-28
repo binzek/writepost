@@ -18,7 +18,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     account
       .get()
       .then((user) => (user ? setIsUser(true) : setIsUser(false)))
-      .catch((error) => console.error(error));
+      .catch(() => null);
   };
 
   // Return context provider with user's status

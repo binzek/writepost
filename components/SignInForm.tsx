@@ -1,5 +1,5 @@
 // Library imports
-import { FC, Dispatch, SetStateAction, FormEvent, ReactNode } from "react";
+import { FC, Dispatch, SetStateAction, FormEvent } from "react";
 import Link from "next/link";
 
 // Sign up form props

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Raleway, Poppins } from "next/font/google";
 
 // Fonts initialization

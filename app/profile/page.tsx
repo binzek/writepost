@@ -104,7 +104,7 @@ const ProfilePage: FC = () => {
             )
             .catch((error) => alert(error.message));
         })
-        .catch((error) => console.error(error));
+        .catch(() => null);
     }, []);
 
     useEffect(() => {
