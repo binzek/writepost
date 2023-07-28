@@ -2,6 +2,8 @@
 
 WRITEPOST is a short story writing application that is built with Next.js on front-end and Appwrite as backend
 
+**Live App: _[writepost.wajid.me](https://writepost.wajid.me/)_**
+
 ## Features
 
 - Minimal and responsive UI
@@ -25,3 +27,5 @@ WRITEPOST is a short story writing application that is built with Next.js on fro
 
 - Figma: For the entire app's UI designing and logo designing
 - ChatGPT: For feature ideas and text contents
+
+**Licensed under MIT Open Source License. Refer [`LICENSE`](/LICENSE) for more details**
