@@ -45,7 +45,7 @@ const ResetPasswordPage: FC = () => {
     const resetPassword = () => {
       setSendButtonContent("Sending...");
       account
-        .createRecovery(email, "http://localhost:3000/reset-password")
+        .createRecovery(email, "https://writepost.wajid.me/reset-password")
         .then(() => {
           setEmail("");
           alert("A password reset link has been sent to your inbox");
