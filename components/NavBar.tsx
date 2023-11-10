@@ -38,7 +38,7 @@ const NavBar: FC = () => {
       {isSideBarOpen ? (
         <CloseIcon
           dimension={35}
-          className="right-4 top-4 z-20 cursor-pointer select-none"
+          className="fixed right-4 top-4 z-20 cursor-pointer select-none"
           onClick={closeSideBar}
         />
       ) : (
