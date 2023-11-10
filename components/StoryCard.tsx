@@ -17,7 +17,13 @@ interface Props {
 const StoryCard: FC<Props> = ({ title, publisher, body, date, deleteFn }) => {
   // Function to get the posted day
   const getPostedDay = (date: string) => {
-    return new Date().getDay() - new Date(date).getDay();
+    const postedDate = new Date(date);
+    const today = new Date();
+
+    const timeDiff = Math.abs(today.getTime() - postedDate.getTime());
+    const dayDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+    return dayDiff;
   };
 
   return (
@@ -29,11 +35,13 @@ const StoryCard: FC<Props> = ({ title, publisher, body, date, deleteFn }) => {
         <p className="text-sm font-medium">{publisher}</p>
       </div>
       <p className="text-xs text-clr-gray3">
-        {getPostedDay(date) === 0
+        {getPostedDay(date) === 1
           ? "Published Today"
-          : getPostedDay(date) === 1
+          : getPostedDay(date) === 2
           ? "Published Yesterday"
-          : `Published ${getPostedDay(date)} Days Ago`}
+          : getPostedDay(date) < 30
+          ? `Published ${getPostedDay(date)} Days Ago`
+          : `Published ${Math.floor(getPostedDay(date) / 30)} Months Ago`}
       </p>
       <p>{body}</p>
       {deleteFn && (
