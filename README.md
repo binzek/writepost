@@ -2,7 +2,7 @@
 
 WRITEPOST is a short story writing application that is built with Next.js on front-end and Appwrite as backend
 
-**Live App: _[writepost.wajid.me](https://writepost.wajid.me/)_**
+**Live App: _[writepost.live.binzek.com](https://writepost.live.binzek.com/)_**
 
 ## Features
 
