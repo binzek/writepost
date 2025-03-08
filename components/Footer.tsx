@@ -24,13 +24,13 @@ const Footer: FC = () => {
       >
         <p>&copy; {currentYear} ABDUL WAJID</p>
         <div className="flex items-center gap-3">
-          <Link href="https://buymeacoffee.com/wajidnv/" target="_blank">
+          <Link href="https://buymeacoffee.com/binzek" target="_blank">
             <HeartIcon dimension={22} strokeWidth={1.5} color="#F33A6A" />
           </Link>
-          <Link href="https://github.com/wajid-nv/writepost/" target="_blank">
+          <Link href="https://github.com/binzek/writepost" target="_blank">
             <GitHubIcon strokeWidth={0.5} />
           </Link>
-          <Link href="https://wajid.me/" target="_blank">
+          <Link href="https://www.binzek.com/" target="_blank">
             <KeyboardIcon strokeWidth={0.5} />
           </Link>
         </div>
